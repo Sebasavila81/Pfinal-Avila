@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CartContext } from "../context/CartContext";
 
 const ItemCount = ({idProducto, precioProducto, stockProducto, title, pictureUrl}) => {
-    const { cart, actualizarCarrito, isInCart, quantityItems, addItem, clearCart, total} = useContext(CartContext)
+    const { actualizarCarrito, isInCart, quantityItems, addItem } = useContext(CartContext)
 
     const [contador, setContador] = useState(0);
     const [ stockDisponible, setStockDisponible ] = useState(stockProducto-quantityItems(idProducto))

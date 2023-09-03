@@ -40,7 +40,7 @@ function Checkout() {
           const productoRef = doc(db, "productos", producto.id);
           const nuevoStock = producto.stock - producto.quantity;
           try {
-            // await updateDoc(productoRef, { stock: nuevoStock });
+            await updateDoc(productoRef, { stock: nuevoStock });
             setResultado(<div>Su pedido se realizó de forma exitosa.</div>);
           } catch {
             setResultado(<Error />);

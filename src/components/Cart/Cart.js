@@ -30,7 +30,7 @@ const Cart = () => {
           <div className="card-content">
             <div className="is-flex is-flex-wrap-wrap">
               {cart.map((p) => (
-                <CartItem key={p.id} {...p} />
+                <CartItem key={p.idProducto} id={p.idProducto} {...p} />
               ))}
             </div>
             <h3 className="title is-4">Total: ${calcularTotal()}</h3>

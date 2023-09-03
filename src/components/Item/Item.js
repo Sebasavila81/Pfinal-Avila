@@ -1,6 +1,5 @@
-import { Image, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import CartItem from "../CartItem/CartItem";
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
@@ -10,23 +9,14 @@ const Item = ({ id, stock, title, price, description, pictureUrl }) => {
   const [quantityAdded, setQuantityAdded] = useState(0)
 
   const {addItem} = useContext(CartContext)
-  const handleOnAdd = (quantity) => {
-    setQuantityAdded(quantity)
 
-    const item = {
-      id:id, title:title, price:price
-    }
-
-    addItem(item, quantity)
-    
-  }
 
   const handlerClickDetail = () => {
     setModal(!modal)
    
 
   }
-console.log(stock)
+
   return (
     <div className="column is-one-third">
       <div className="card">
@@ -53,7 +43,7 @@ console.log(stock)
                 <Link to='/cart' className=''>Terminar compra</Link>
 
               ) : (
-                <ItemCount initial={1} stockProducto={stock} idProducto={id} precioProducto={price} pictureUrl={pictureUrl} title={title} onAdd={handleOnAdd}/>
+                <ItemCount initial={1} stockProducto={stock} idProducto={id} precioProducto={price} pictureUrl={pictureUrl} title={title} />
               )  
             }
             

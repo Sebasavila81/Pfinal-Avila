@@ -18,7 +18,7 @@ export const CardProvider = ({children}) => {
     }
 
     const removeItem = (itemId) => {
-        const cartUpdated = cart.filter(prod => prod.id !== itemId)
+        const cartUpdated = cart.filter(prod => prod.idProducto !== itemId)
         setCart(cartUpdated)
     }
 
@@ -30,15 +30,15 @@ export const CardProvider = ({children}) => {
         return cart.some(prod => prod.idProducto === itemId)
     }
     const quantityItems = (idProducto) => {
-        const items = cart.filter(prod => prod.idProducto === idProducto)
+        let items = cart.filter(prod => prod.idProducto === idProducto)
         if(items.length){
-            return items[0].cantidad
+            return items[0].quantity
             } else {
                 return 0
             }
     }
     const actualizarCarrito = (cantidad, idProducto) => {
-        const cart2 = cart.map( e => e.idProducto == idProducto ? {...e, cantidad: e.cantidad+cantidad} : e)
+        const cart2 = cart.map( e => e.idProducto == idProducto ? {...e, quantity: e.quantity+cantidad} : e)
         cart.length=0
         cart.push(...cart2)
     }
