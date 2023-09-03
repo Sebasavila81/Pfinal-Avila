@@ -1,12 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { db } from "../../config/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
-
 import { CartContext } from "../context/CartContext";
 import Error from "../Error/Error";
 
 function Checkout() {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   const [resultado, setResultado] = useState("Cargando");
 
   useEffect(() => {
@@ -41,6 +40,7 @@ function Checkout() {
           const nuevoStock = producto.stock - producto.quantity;
           try {
             await updateDoc(productoRef, { stock: nuevoStock });
+            clearCart ()
             setResultado(<div>Su pedido se realizó de forma exitosa.</div>);
           } catch {
             setResultado(<Error />);
